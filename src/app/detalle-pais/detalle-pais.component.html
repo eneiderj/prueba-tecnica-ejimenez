@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-md-12 col-lg-12">
+        <article class="post vt-post">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
+                    <div class="post-type post-img">
+                        <img src="{{country[0].flags.png}}" class="img-responsive" alt="image post">
+                    </div>
+                    <div class="author-info author-info-2">
+                        
+                        <ul class="list-inline">
+                            <li>
+                                <div class="info">
+                                    <p>Latitud y Longitud</p>
+                                    <strong>{{country[0].latlng}}</strong></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8">
+                    <div class="caption">
+                        <h3 class="md-heading">{{country[0].name.official}}</h3>
+                        <p>Continente: {{ country[0].continents }}</p>
+                        <p>Capital: {{ country[0].capital }}</p>
+                        <p>Idiomas: {{ country[0].languages | ObjToArray}}</p>
+                        <p *ngFor="let moneda of country[0].currencies | ObjToArray ">Moneda: {{ moneda.name }}</p>
+                        <p>Subregion: {{ country[0].subregion }}</p>
+                        <p>Poblacion: {{ country[0].population }}</p>
+                        <a class="btn btn-primary" href="#" role="button">volver</a> </div>
+                </div>
+            </div>
+        </article>
+        <div class="clearfix"></div>
+    </div>
+</div>

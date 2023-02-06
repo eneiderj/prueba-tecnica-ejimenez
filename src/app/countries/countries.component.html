@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+        <input type="text"
+            class="form-control mb-2"
+            placeholder="Buscar pais"
+            #txtBuscar
+            (keyup)="onBuscarPais( txtBuscar.value )"
+        >
+        <button class="btn btn-primary"
+        (click)="prevPage()"
+        >
+            Anteriores
+        </button>
+        &nbsp;
+        <button class="btn btn-primary"
+        (click)="nextPage()"
+        [disabled]="(countries | filtro:page:buscar).length === 0"
+        >
+            Siguientes
+        </button>
+        </div>
+    </div>
+    <div class="row">    
+        <div *ngFor="let country of countries | filtro:page:buscar" class="col-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ country.flags.png }}" alt=" {{country.flags.alt}} ">
+            <div class="card-body">
+            <h5 class="card-title">{{ country.name.common }}</h5>
+            <p class="card-text"> Capital: {{ country.capital }} </p>          
+            <p class="card-text"> Idioma: {{ country.languages | ObjToArray}} </p>
+            <p class="card-text" *ngFor="let moneda of country.currencies | ObjToArray "> Moneda: {{moneda.name}} {{moneda.symbol}} </p>
+            <a class="btn btn-primary btn-sm"
+                [routerLink]="['pais', country.name.common]"
+            >Ver detalle</a>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
